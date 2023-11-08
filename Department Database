@@ -1,0 +1,43 @@
+#This project utilizes the follow Superstore data: 
+
+CREATE TABLE department_store  (
+    item_id INTEGER PRIMARY KEY,
+    item_name TEXT,
+    category TEXT,
+    price DECIMAL(10, 2),
+    stock_quantity INTEGER,
+    average_rating DECIMAL(3, 2)
+);
+
+INSERT INTO department_store  (item_id, item_name, category, price, stock_quantity, average_rating)
+VALUES
+    (1, 'Rice Cooker', 'Kitchen Supplies', 49.97, 50, 4.6),
+    (2, 'Coffee Table', 'Furniture', 27, 30, 4.8),
+    (3, 'Laptop', 'Electronics', 750.00, 20, 4.5),
+    (4, 'Washing Machine', 'Appliances', 199.50, 40, 4.3),
+    (5, 'TV', 'Electronics', 40.00, 60, 4.2),
+    (6, 'Air Fryer', 'Kitchen Supplies', 39.95, 80, 4.4),
+    (7, 'Nightstand', 'Furniture', 35.00, 25, 4.7),
+    (8, 'Tablet', 'Electronics', 205.00, 15, 4.1),
+    (9, 'Air Purifier', 'Appliances', 53.00, 35, 4.6),
+    (10, 'Coffee Maker', 'Kitchen Supplies', 45.99, 50, 4.9),
+    (11, 'Bookshelf', 'Furniture', 89.99, 20, 4.5),
+    (12, 'Headphone', 'Electronics', 31.99, 75, 4.3),
+    (13, 'Oven', 'Appliances', 229.99, 30, 4.7),
+    (14, 'Microwave', 'Kitchen Supplies', 81.00, 40, 4.4),
+    (15, 'Office Chair', 'Furniture', 99.99, 100, 4.2);
+
+
+#Use a SELECT statement to order the items by price.
+SELECT item_name, price
+FROM department_store
+ORDER BY price desc;
+
+#Show a statistic about the item prices.
+SELECT avg(price)
+FROM department_store;
+
+#Show a statistic about the price for items in the category of "Kitchen Supplies". 
+SELECT avg(price)
+FROM department_store
+WHERE category="Kitchen Supplies"

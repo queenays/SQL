@@ -44,7 +44,7 @@ FROM department_store
 WHERE category='Furniture';
 
 --What is the minimum average rating in the category of appliances?
-SELECT SUM (stock_quantity) 
+SELECT MIN (average_rating) 
 FROM department_store  
 WHERE category = 'Appliances';
 

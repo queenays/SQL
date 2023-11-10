@@ -33,12 +33,17 @@ SELECT item_name, price
 FROM department_store
 ORDER BY price desc;
 
+--What kind of items and how many stocks are in the category of electronics?
+SELECT item_name, stock_quantity
+FROM department_store  
+WHERE category = 'Electronics';
+
 --How many items are more than $100?
 SELECT * 
 FROM department_store 
 WHERE price > 100;
 
---What is the sum price of items in the category of furniture? 
+--What is the total price of items in the category of furniture? 
 SELECT SUM(price)
 FROM department_store
 WHERE category='Furniture';

@@ -1,4 +1,4 @@
-#This project utilizes the follow department store data: 
+--Create a department store database
 
 CREATE TABLE department_store  (
     item_id INTEGER PRIMARY KEY,
@@ -28,16 +28,26 @@ VALUES
     (15, 'Office Chair', 'Furniture', 99.99, 100, 4.2);
 
 
-#Use a SELECT statement to order the items by price.
+--Display the database ordered by price 
 SELECT item_name, price
 FROM department_store
 ORDER BY price desc;
 
-#Show a statistic about the item prices.
-SELECT avg(price)
-FROM department_store;
+--How many items are more than $100?
+SELECT * 
+FROM department_store 
+WHERE price > 100;
 
-#Show a statistic about the price for items in the category of "Kitchen Supplies". 
-SELECT avg(price)
+--What is the sum price of items in the category of furniture? 
+SELECT SUM(price)
 FROM department_store
-WHERE category="Kitchen Supplies"
+WHERE category='Furniture';
+
+--What is the minimum average rating in the category of appliances?
+SELECT SUM (stock_quantity) 
+FROM department_store  
+WHERE category = 'Appliances';
+
+--Which item has the most quantity?
+SELECT item_name, MAX(stock_quantity) 
+FROM department_store ;

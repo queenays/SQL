@@ -1,4 +1,4 @@
---Create a Fortune 500 database
+--Create a Fortune 500 Analysis
 
 CREATE TABLE fortune_companies (
     company_id INTEGER PRIMARY KEY,
@@ -66,9 +66,30 @@ WHERE industry="Retail"
 OR industry="Wholesalers"
 ORDER BY industry asc;
 
---Which technology companies have healthcare benefits?
-SELECT company_name, healthcare_benefits
+--Which technology companies have healthcare benefits and at least 20 paid time off days?
+SELECT company_name, healthcare_benefits, paid_time_off_days
 FROM fortune_companies
 WHERE industry="Technology"
-AND healthcare_benefits=1;
+AND healthcare_benefits=1
+AND paid_time_off_days>=20;
 
+--Which companies have an average maternity leave weeks of at least 10 weeks?
+SELECT company_name, AVG(maternity_leave_weeks) AS avg_maternity_leave_weeks
+FROM fortune_companies
+GROUP BY company_name
+HAVING avg_maternity_leave_weeks>= 10;
+
+--Display these companies' revenue in integer
+SELECT company_name, ROUND(revenue) AS revenue_in_integer 
+FROM fortune_companies 
+ORDER BY revenue_in_integer DESC;
+
+--Display these companies' revenue results this year
+SELECT company_name, industry, revenue, 
+CASE WHEN revenue>=500 THEN "High"
+WHEN revenue>=400 THEN "Medium"
+WHEN revenue>=200 THEN "Low"
+ELSE "Very Low" 
+END AS "revenue_results"
+FROM fortune_companies
+ORDER BY revenue DESC;

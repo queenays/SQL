@@ -84,7 +84,7 @@ SELECT company_name, ROUND(revenue) AS revenue_in_integer
 FROM fortune_companies 
 ORDER BY revenue_in_integer DESC;
 
---Display these companies' revenue results this year
+--Assign all the companies' revenue results as "high", "medium", "low" or "very low" based on the revenue
 SELECT company_name, industry, revenue, 
 CASE WHEN revenue>=500 THEN "High"
 WHEN revenue>=400 THEN "Medium"

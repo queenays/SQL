@@ -1,0 +1,69 @@
+--Create a famous singers database
+
+CREATE TABLE famous_singers (id INTEGER PRIMARY KEY,
+    name TEXT,
+    from_which_country TEXT);
+    
+INSERT INTO famous_singers(name, from_which_country)
+    VALUES ("Taylor Swift", "America");
+INSERT INTO famous_singers(name, from_which_country)
+    VALUES ("Michael Bublé.", "Canada");
+INSERT INTO famous_singers(name, from_which_country)
+    VALUES ("Nat King Cole", "America");
+INSERT INTO famous_singers(name, from_which_country)
+    VALUES ("Michael Jackson", "America");
+INSERT INTO famous_singers(name, from_which_country)
+    VALUES ("Whitney Houston", "America");
+INSERT INTO famous_singers(name, from_which_country)
+    VALUES ("Justin Bieber", "Canada");
+
+CREATE TABLE person_details (id INTEGER PRIMARY KEY,
+    sex TEXT,
+    age TEXT);
+    
+INSERT INTO person_details(sex, age)
+    VALUES ("F", "34");
+INSERT INTO person_details(sex, age)
+    VALUES ("M", "48");
+INSERT INTO person_details(sex, age)
+    VALUES ("M", "45");
+INSERT INTO person_details(sex, age)
+    VALUES ("M", "50");
+INSERT INTO person_details(sex, age)
+    VALUES ("F", "48");
+INSERT INTO person_details(sex, age)
+    VALUES ("M", "29");
+
+CREATE TABLE career_details (id INTEGER PRIMARY KEY,
+    person_id INTEGER,
+    first_album_release_year TEXT,
+    number_of_studio_album INTEGER TEXT);
+    
+INSERT INTO career_details(person_id, first_album_release_year, number_of_studio_album)
+    VALUES (1, "2006", "10");
+INSERT INTO career_details(person_id, first_album_release_year, number_of_studio_album)
+    VALUES (2, "2001", "11");
+INSERT INTO career_details(person_id, first_album_release_year, number_of_studio_album)
+    VALUES (3, "1944", "28");
+INSERT INTO career_details(person_id, first_album_release_year, number_of_studio_album)
+    VALUES (4, "1972", "10");
+INSERT INTO career_details(person_id, first_album_release_year, number_of_studio_album)
+    VALUES (5, "1985", "7");
+INSERT INTO career_details(person_id, first_album_release_year, number_of_studio_album)
+    VALUES (6, "2010", "6");
+
+--Display the singer's personal information and order by name alphabet
+SELECT famous_singers.name, famous_singers.from_which_country, person_details.sex, person_details.age
+FROM famous_singers
+JOIN person_details
+ON famous_singers.id=person_details.id
+ORDER BY name asc;
+
+--Where do the singers come from and the total number of their studio albums?
+SELECT a.name, a.from_which_country, c.number_of_studio_album
+FROM famous_singers AS a
+JOIN person_details AS b
+ON a.id=b.id
+JOIN career_details AS c
+ON a.id=c.id
+ORDER BY number_of_studio_album desc;

@@ -52,6 +52,12 @@ INSERT INTO career_details(person_id, first_album_release_year, number_of_studio
 INSERT INTO career_details(person_id, first_album_release_year, number_of_studio_album)
     VALUES (6, "2010", "6");
 
+--What is the first album release year of each singer?
+SELECT famous_singers.name, career_details.first_album_release_year
+FROM famous_singers
+LEFT JOIN career_details
+ON famous_singers.id=career_details.id;
+
 --Display the singer's personal information and order by name alphabet
 SELECT famous_singers.name, famous_singers.from_which_country, person_details.sex, person_details.age
 FROM famous_singers

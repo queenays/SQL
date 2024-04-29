@@ -70,12 +70,12 @@ SELECT title
 FROM "netflix_titles_info"
 ORDER BY title asc;
 
---Who was the Director for the movie The Starling?
+--Who was the Director for the movie Midnight Mass?
 SELECT director
 FROM "netflix_people" people
 LEFT JOIN  "netflix_titles_info" titles 
 ON people.show_id = titles.show_id
-WHERE titles.title='The Starling';
+WHERE titles.title='Midnight Mass';
 
 --What is the oldest movie in the database and what year was it made?
 SELECT title, release_year

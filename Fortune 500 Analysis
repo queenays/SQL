@@ -59,7 +59,7 @@ VALUES
     ('Molina Healthcare', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
 
 
---Which companies are the types of retail and wholesalers?
+--Which companies are the types of retail or wholesalers?
 SELECT company_name, industry
 FROM fortune_companies
 WHERE industry="Retail"
